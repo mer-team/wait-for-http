@@ -29,5 +29,12 @@ jobs:
         with:
           push: true
           tags: merteam/wait-for-http:latest
+      - name: Update Image Overview
+        uses: meeDamian/sync-readme@v1.0.6
+        with:
+          user: ${{ secrets.DOCKER_USERNAME }}
+          pass: ${{ secrets.DOCKER_PASSWORD }}
+          slug: merteam/wait-for-http
+          description: Docker image that waits for the HTTP service readiness with auth
       - name: Output Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
