@@ -7,10 +7,12 @@ The Docker Image is available [here](https://hub.docker.com/r/merteam/wait-for-h
 The GitHub Source is available [here](https://github.com/mer-team/wait-for-http).
 
 ### ARGS
-```URL``` - URL to check <br>
-```USER``` - HTTP basic auth username <br>
-```PASS``` - HTTP basic auth password <br>
-```TIME``` - Timeout to check if the service is up
+| Arg | Default | Description |
+| --- | --- | --- |
+| URL | localhost | URL to check |
+| USER | admin | HTTP basic auth username  |
+| PASS | admin | HTTP basic auth password |
+| TIME | 10 | Timeout to check if the service is up |
 
 ### GitHub Action Example
 ```yaml
@@ -19,4 +21,4 @@ steps:
       run: docker run -e TIME=10 -e USER=username -e PASS=password -e URL=http://localhost/api --net=host merteam/wait-for-http:latest
 ```
 
-The `--net=host` allows us to use the host network and so access all the containers locally.
+The `--net=host` allows us to use the host network and so access all the containers locally since the respective ports are forward.
